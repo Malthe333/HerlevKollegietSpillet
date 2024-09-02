@@ -24,16 +24,15 @@ public class Movement : MonoBehaviour
            Cursor.lockState = CursorLockMode.Locked;
     }
 	void Update () {
+        // Movement for the mouse
 		rotation.y += Input.GetAxis ("Mouse X");
 		rotation.x += -Input.GetAxis ("Mouse Y");
 		transform.eulerAngles = (Vector2)rotation * speed;
-
+        // Movement end of the mouse
 
          if (Input.GetKeyDown(KeyCode.E))
         {
             InteractWithObject();
-            
-            
         }
 
          if (isBallTeleported && GonnaThrow == false)
@@ -46,8 +45,6 @@ public class Movement : MonoBehaviour
             GonnaThrow = true;
             Throw();
         }
-
-        
 	}
 
     void InteractWithObject()
@@ -73,14 +70,8 @@ public class Movement : MonoBehaviour
         Rigidbody rb = BallToThrow.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            
-            
-            
-            
             Vector3 throwDirection = throwPoint.forward;
             rb.AddForce(throwDirection * throwForce);
-            
-
         }
 
     }
