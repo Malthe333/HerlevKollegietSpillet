@@ -17,22 +17,32 @@ public class Movement : MonoBehaviour
     public float throwForce = 500f;
     private bool GonnaThrow;
     public Vector3 additionalOffset = new Vector3(0, 0, 1);
+    public GameObject player;
 
 
     void Start()
     {
-           Cursor.lockState = CursorLockMode.Locked;
+        player.GetComponent<PlayerController>().OnBallHit += Movement_OnBallHit;
     }
-	void Update () {
-        // Movement for the mouse
-		rotation.y += Input.GetAxis ("Mouse X");
-		rotation.x += -Input.GetAxis ("Mouse Y");
-		transform.eulerAngles = (Vector2)rotation * speed;
-        // Movement end of the mouse
 
-         if (Input.GetKeyDown(KeyCode.E))
+    private void Movement_OnBallHit(Transform ballTransform)
+    {
+        ballTransform.transform.position = targetPosition.position;
+        ballTransform.transform.rotation = targetPosition.rotation;
+        isBallTeleported = true;
+        GonnaThrow = false;
+        Rigidbody rb = BallToThrow.GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.constraints = RigidbodyConstraints.FreezePosition;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        BallToThrow.transform.parent = targetPosition;
+    }
+
+    void Update () {
+
+        if (isBallTeleported)
         {
-            InteractWithObject();
+            //BallToThrow.transform.rotation = targetPosition.rotation;
         }
 
          if (isBallTeleported && GonnaThrow == false)
@@ -75,9 +85,11 @@ public class Movement : MonoBehaviour
         if (rb != null)
         {
             Vector3 throwDirection = throwPoint.forward;
-            rb.AddForce(throwDirection * throwForce);
+            rb.AddForce(BallToThrow.transform.forward * throwForce);
             rb.useGravity = true;
             rb.constraints = RigidbodyConstraints.None;
+            isBallTeleported = false;
+            BallToThrow.transform.parent= null;
 
         }
 
