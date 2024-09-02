@@ -37,7 +37,7 @@ public class Movement : MonoBehaviour
 
          if (isBallTeleported && GonnaThrow == false)
         {
-            teleportedObject.position = targetPosition.position;
+            teleportedObject.position = targetPosition.position; //den accellerer 
         }
 
         if (isBallTeleported && (Input.GetMouseButtonDown(0)))
@@ -60,6 +60,10 @@ public class Movement : MonoBehaviour
                 hit.transform.position = targetPosition.position;
                 isBallTeleported = true;
                 GonnaThrow = false;
+                Rigidbody rb = BallToThrow.GetComponent<Rigidbody>();
+                rb.useGravity = false;
+                rb.constraints = RigidbodyConstraints.FreezePosition;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
                 // Additional interaction logic can be added here
             }
         }
@@ -72,6 +76,9 @@ public class Movement : MonoBehaviour
         {
             Vector3 throwDirection = throwPoint.forward;
             rb.AddForce(throwDirection * throwForce);
+            rb.useGravity = true;
+            rb.constraints = RigidbodyConstraints.None;
+
         }
 
     }
