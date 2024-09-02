@@ -4,5 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/ValdemarScene.unity
+    guid: b7bd449046191e04e8a9667735532934
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: c46c5e10141045e45923ffa87eb24ba0, type: 2}

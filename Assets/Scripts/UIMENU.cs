@@ -19,6 +19,5 @@ public class UIMENU : MonoBehaviour
     public void QuitClick()
     {
         Application.Quit();
-        Debug.Log("Quit");
     }
 }
