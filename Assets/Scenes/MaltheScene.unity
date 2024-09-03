@@ -629,11 +629,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 802284397}
   m_SourcePrefab: {fileID: 100100000, guid: 4079f7ac308d6d34aa745cfd248a7aa7, type: 3}
---- !u!1 &525145732 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8395365905032966768, guid: 4079f7ac308d6d34aa745cfd248a7aa7, type: 3}
-  m_PrefabInstance: {fileID: 475703744}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &607634226
 GameObject:
   m_ObjectHideFlags: 0
@@ -11618,7 +11613,7 @@ MonoBehaviour:
   BallToThrow: {fileID: 1575945926337711114}
   throwForce: 200
   additionalOffset: {x: 0, y: 0, z: 1}
-  player: {fileID: 525145732}
+  player: {fileID: 802284391}
 --- !u!4 &1813085195
 Transform:
   m_ObjectHideFlags: 0

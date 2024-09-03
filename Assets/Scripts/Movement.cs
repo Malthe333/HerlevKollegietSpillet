@@ -5,7 +5,6 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 
 {
-	Vector2 rotation = Vector2.zero;
 	public float speed = 3;
     public Transform targetPosition; 
     public Transform throwPoint;
@@ -40,11 +39,6 @@ public class Movement : MonoBehaviour
 
     void Update () {
 
-        if (isBallTeleported)
-        {
-            //BallToThrow.transform.rotation = targetPosition.rotation;
-        }
-
          if (isBallTeleported && GonnaThrow == false)
         {
             teleportedObject.position = targetPosition.position; //den accellerer 
@@ -71,6 +65,11 @@ public class Movement : MonoBehaviour
 
         }
 
+    }
+
+    void OnFire()
+    {
+        Debug.Log("Fire!");
     }
    
 

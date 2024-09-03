@@ -8,10 +8,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float interactionRange = 5f;
+    private Transform cam;
     // Start is called before the first frame update
     void Start()
     {
-        
+        cam = transform.GetChild(0);
     }
 
     // Update is called once per frame
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
         // Cast a ray from the camera's position forward to check for interactable objects
-        if (Physics.Raycast(transform.position, transform.forward, out hit, interactionRange))
+        if (Physics.Raycast(cam.position, cam.forward, out hit, interactionRange))
         {
             if (hit.transform.CompareTag("Item"))
             {
