@@ -166,7 +166,6 @@ GameObject:
   - component: {fileID: 79265310}
   - component: {fileID: 79265309}
   - component: {fileID: 79265308}
-  - component: {fileID: 79265307}
   m_Layer: 0
   m_Name: ModstanderKop
   m_TagString: HitCup
@@ -174,18 +173,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &79265307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 79265306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6a6df342b52d24092cf6bbb590c535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &79265308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,7 +444,6 @@ GameObject:
   - component: {fileID: 230250255}
   - component: {fileID: 230250254}
   - component: {fileID: 230250253}
-  - component: {fileID: 230250252}
   - component: {fileID: 230250251}
   m_Layer: 0
   m_Name: EgenKop
@@ -487,18 +473,6 @@ MonoBehaviour:
   despawnDelay: 2
   wobbleIntensity: 6.17
   wobbleDuration: 17.29
---- !u!114 &230250252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 230250250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6a6df342b52d24092cf6bbb590c535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &230250253
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -646,10 +620,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3791807015514938022, guid: 4079f7ac308d6d34aa745cfd248a7aa7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8579636886608250998, guid: 4079f7ac308d6d34aa745cfd248a7aa7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 802284397}
   m_SourcePrefab: {fileID: 100100000, guid: 4079f7ac308d6d34aa745cfd248a7aa7, type: 3}
 --- !u!1 &525145732 stripped
 GameObject:
@@ -1007,8 +985,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: -0.01, y: 0.2167673, z: 0.1657139}
-  m_Center: {x: -0.08, y: 0.10838362, z: -0.00000001490116}
+  m_Size: {x: -0.01, y: 0.21, z: 0.1657139}
+  m_Center: {x: 0, y: 0.10838362, z: 0.01}
 --- !u!65 &768467705
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1028,8 +1006,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: -0.01, y: 0.2167673, z: 0.1657139}
-  m_Center: {x: 0.069, y: 0.10838362, z: -0.00000001490116}
+  m_Size: {x: 0, y: 0.2167673, z: 0.1657139}
+  m_Center: {x: 0.069, y: 0.10838362, z: 0}
 --- !u!65 &768467706
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1128,6 +1106,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768467700}
   m_Mesh: {fileID: -2317363899738505545, guid: dd6108e232fcd1c4988a7b5102678663, type: 3}
+--- !u!1 &802284391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8579636886608250998, guid: 4079f7ac308d6d34aa745cfd248a7aa7, type: 3}
+  m_PrefabInstance: {fileID: 475703744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &802284397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802284391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955a565dc628f8f42ac8a02a4dfaf570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionRange: 58.25
 --- !u!1 &810197089
 GameObject:
   m_ObjectHideFlags: 0
