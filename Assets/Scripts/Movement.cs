@@ -36,6 +36,7 @@ public class Movement : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezePosition;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         BallToThrow.transform.parent = targetPosition;
+        Debug.Log("Ball yes yes!!");
     }
 
     void Update () {
@@ -56,28 +57,6 @@ public class Movement : MonoBehaviour
             Throw();
         }
 	}
-
-    void InteractWithObject()
-    {
-        RaycastHit hit;
-        // Cast a ray from the camera's position forward to check for interactable objects
-        if (Physics.Raycast(transform.position, transform.forward, out hit, interactionRange, Ball))
-        {
-            if (hit.transform.CompareTag("Ball"))
-            {
-                // Perform interaction logic here
-                Debug.Log("Interacted with " + hit.transform.name);
-                hit.transform.position = targetPosition.position;
-                isBallTeleported = true;
-                GonnaThrow = false;
-                Rigidbody rb = BallToThrow.GetComponent<Rigidbody>();
-                rb.useGravity = false;
-                rb.constraints = RigidbodyConstraints.FreezePosition;
-                rb.constraints = RigidbodyConstraints.FreezeRotation;
-                // Additional interaction logic can be added here
-            }
-        }
-    }
 
     void Throw()
     {
