@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
             {
                 // Fire event that ball script can subscribe to
                 OnBallHit?.Invoke(hit.transform);
-                Debug.Log("Ball yes yes!!");
             }
         }
     }
