@@ -36,7 +36,6 @@ public class Movement : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezePosition;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         BallToThrow.transform.parent = targetPosition;
-        Debug.Log("Ball yes yes!!");
     }
 
     void Update () {
