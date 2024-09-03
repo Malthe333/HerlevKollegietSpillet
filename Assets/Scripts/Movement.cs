@@ -5,72 +5,45 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 
 {
-	public float speed = 3;
-    public Transform targetPosition; 
-    public Transform throwPoint;
-    public float interactionRange = 5f;    // How far you can interact with objects
-    public LayerMask Ball; 
-    private bool isBallTeleported;
-    public Transform teleportedObject;
-    public GameObject BallToThrow;
-    public float throwForce = 500f;
-    private bool GonnaThrow;
-    public Vector3 additionalOffset = new Vector3(0, 0, 1);
-    public GameObject player;
+    [SerializeField]
+    private Transform targetPosition;
+    [SerializeField]
+    private GameObject player;
+    [SerializeField]
+    private float throwForce = 500f;
+    private Rigidbody ball_rb;
+    private Transform ball;
 
 
     void Start()
     {
         player.GetComponent<PlayerController>().OnBallHit += Movement_OnBallHit;
+        player.GetComponent<PlayerController>().OnFirePress += Movement_OnFirePress;
+    }
+
+    private void Movement_OnFirePress(Transform obj)
+    {
+        if (ball != null && ball.parent != null)
+        {
+            Throw();
+        }
     }
 
     private void Movement_OnBallHit(Transform ballTransform)
     {
-        ballTransform.transform.position = targetPosition.position;
-        ballTransform.transform.rotation = targetPosition.rotation;
-        isBallTeleported = true;
-        GonnaThrow = false;
-        Rigidbody rb = BallToThrow.GetComponent<Rigidbody>();
-        rb.useGravity = false;
-        rb.constraints = RigidbodyConstraints.FreezePosition;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-        BallToThrow.transform.parent = targetPosition;
+        ballTransform.position = targetPosition.position;
+        ballTransform.rotation = targetPosition.rotation;
+        ballTransform.parent = targetPosition;
+        ball_rb = ballTransform.gameObject.GetComponent<Rigidbody>();
+        ball_rb.isKinematic = true;
+        ball = ballTransform;
     }
-
-    void Update () {
-
-         if (isBallTeleported && GonnaThrow == false)
-        {
-            teleportedObject.position = targetPosition.position; //den accellerer 
-        }
-
-        if (isBallTeleported && (Input.GetMouseButtonDown(0)))
-        {
-            GonnaThrow = true;
-            Throw();
-        }
-	}
 
     void Throw()
     {
-        Rigidbody rb = BallToThrow.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            Vector3 throwDirection = throwPoint.forward;
-            rb.AddForce(BallToThrow.transform.forward * throwForce);
-            rb.useGravity = true;
-            rb.constraints = RigidbodyConstraints.None;
-            isBallTeleported = false;
-            BallToThrow.transform.parent= null;
-
-        }
-
-    }
-
-    void OnFire()
-    {
-        Debug.Log("Fire!");
-        //Hi bro
+        ball_rb.isKinematic = false;
+        ball_rb.AddForce(ball.forward * throwForce);
+        ball.parent = null;
     }
    
 

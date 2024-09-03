@@ -44,8 +44,15 @@ public class PlayerController : MonoBehaviour
     // Define an event to notify other scripts when a ball is hit
     public event Action<Transform> OnBallHit;
 
+    public event Action<Transform> OnFirePress;
+
     void OnPickUp(InputValue value)
     {
         InteractWithObject();
+    }
+
+    void OnFire()
+    {
+        OnFirePress?.Invoke(cam);
     }
 }
