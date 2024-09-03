@@ -70,6 +70,7 @@ public class Movement : MonoBehaviour
     void OnFire()
     {
         Debug.Log("Fire!");
+        //Hi bro
     }
    
 
